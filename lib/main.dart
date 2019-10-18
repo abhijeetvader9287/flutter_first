@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     title: "My first app",
-    home: MyApp(),
+    home: MyButton(),
     /* Scaffold(
       appBar: AppBar(
         title: Text("My first app appBar"),
@@ -14,10 +14,10 @@ void main() {
         ),
       ),
     ),*/
-    theme: ThemeData(
+    /*theme: ThemeData(
         primarySwatch: Colors.red,
         accentColor: Colors.greenAccent,
-        backgroundColor: Colors.orange),
+        backgroundColor: Colors.orange),*/
   ));
 }
 
@@ -134,4 +134,57 @@ class MyStartHome extends StatelessWidget {
       ),
     );
   }
+}
+
+class MyButton extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return MyButtonState();;
+  }
+
+}
+
+class MyButtonState extends State<MyButton>
+{
+  int counter= 0;
+  List<String> strings=['aa','ab','ac','ad','ae','af'];
+  String displayString="Hello world!";
+  void onPressOfButton()
+  {
+    setState(() {
+      displayString=strings[counter];
+      counter=counter<4?counter+1:0;
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Stateful widget"),
+        backgroundColor: Colors.lightGreenAccent,
+      ),
+      body: Container(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(displayString,style: TextStyle(fontSize: 40.0),),
+              Padding(padding: EdgeInsets.all(10.0),),
+              RaisedButton(
+                child: Text("Press me",
+                style: TextStyle(color: Colors.lightBlueAccent),
+                ),
+                color: Colors.red,
+                onPressed: onPressOfButton,
+              )
+
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
 }
