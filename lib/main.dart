@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     title: "My first app",
-    home: MyButton(),
+    home: MyStateFullWidget(),
     /* Scaffold(
       appBar: AppBar(
         title: Text("My first app appBar"),
@@ -14,10 +14,10 @@ void main() {
         ),
       ),
     ),*/
-    /*theme: ThemeData(
+     theme: ThemeData(
         primarySwatch: Colors.red,
         accentColor: Colors.greenAccent,
-        backgroundColor: Colors.orange),*/
+        backgroundColor: Colors.orange),
   ));
 }
 
@@ -135,6 +135,58 @@ class MyStartHome extends StatelessWidget {
     );
   }
 }
+
+
+/*************************/
+class MyStateFullWidget extends StatefulWidget
+{
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return MyStateFullWidgetState();
+  }
+}
+
+class MyStateFullWidgetState extends State<MyStateFullWidget>
+{
+  String texts="click here";
+  int counter=0;
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("My stateful widget"),
+        backgroundColor: Colors.pink,
+      ),
+      body: Container(
+        child: Center(
+          child: RaisedButton(
+            child: Text(texts),
+            onPressed: onButtonPressed,
+
+          )
+        ),
+      ),
+    );
+  }
+
+
+  void onButtonPressed() {
+    setState(() {
+      counter++;
+      texts="you clicked "+counter.toString();
+    });
+  }
+}
+/*************************/
+
+
+
+
+
+
+
 
 class MyButton extends StatefulWidget{
   @override
