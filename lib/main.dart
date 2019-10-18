@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     title: "My first app",
-    home: MyEditText(),
+    home: MyLocalImageApp(),
     /* Scaffold(
       appBar: AppBar(
         title: Text("My first app appBar"),
@@ -298,6 +298,37 @@ class MyButtonState extends State<MyButton>
           ),
         ),
       ),
+    );
+  }
+
+}
+
+class MyLocalImageApp extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Load local image"),
+      ),
+      body: Container(
+        child: Center(
+          child: Text(
+            "Hi",
+            style: TextStyle(color:Colors.black
+            ),
+          ),
+        ),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('data_repo/img/bg1.jpg'),
+            fit: BoxFit.cover
+          )
+        ),
+      ),
+
+
+
     );
   }
 
