@@ -17,11 +17,11 @@ void main() {
     theme: ThemeData(
         primarySwatch: Colors.red,
         accentColor: Colors.greenAccent,
-        backgroundColor: Colors.orange
-    ),
+        backgroundColor: Colors.orange),
   ));
 }
-class MyStartHome extends StatelessWidget{
+
+class MyStartHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -32,17 +32,27 @@ class MyStartHome extends StatelessWidget{
       body: Container(
         // set background color
         decoration: BoxDecoration(color: Colors.yellow),
-child: Center(
-  child: Container(
-    color: Theme.of(context).accentColor,
-    child: Text(
-      'Hello world',
-      style: Theme.of(context).textTheme.title,
-    ),
-  ),
-),
+        child: Center(
+          child: Container(
+            color: Theme.of(context).accentColor,
+            child: Text(
+              'Hello world',
+              style: Theme.of(context).textTheme.title,
+            ),
+          ),
+        ),
+      ),
+      floatingActionButton: Theme(
+        //override theme
+        data: Theme.of(context).copyWith(
+            colorScheme: Theme.of(context)
+                .colorScheme
+                .copyWith(secondary: Colors.lightBlueAccent)),
+        child: FloatingActionButton(
+          onPressed: null,
+          child: Icon(Icons.add),
+        ),
       ),
     );
   }
-
 }
