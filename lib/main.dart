@@ -13,5 +13,10 @@ void main() {
         ),
       ),
     ),
+    theme: ThemeData(
+        primarySwatch: Colors.red,
+        accentColor: Colors.greenAccent,
+        backgroundColor: Colors.orange
+    ),
   ));
 }
