@@ -32,7 +32,15 @@ class MyStartHome extends StatelessWidget{
       body: Container(
         // set background color
         decoration: BoxDecoration(color: Colors.yellow),
-
+child: Center(
+  child: Container(
+    color: Theme.of(context).accentColor,
+    child: Text(
+      'Hello world',
+      style: Theme.of(context).textTheme.title,
+    ),
+  ),
+),
       ),
     );
   }
