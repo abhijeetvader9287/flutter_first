@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     title: "My first app",
-    home: MyStateFullWidget(),
+    home: MyEditText(),
     /* Scaffold(
       appBar: AppBar(
         title: Text("My first app appBar"),
@@ -180,6 +180,68 @@ class MyStateFullWidgetState extends State<MyStateFullWidget>
   }
 }
 /*************************/
+
+/************************************/
+class MyEditText extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return MyEditTextState();
+  }
+
+}
+class MyEditTextState extends State<MyEditText>{
+  String results="";
+  final TextEditingController controller=TextEditingController();
+
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Using editText"),
+        backgroundColor: Colors.red,
+      ),
+      body:Container(
+        padding: const EdgeInsets.all(10.0),
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              TextField(
+                decoration: (InputDecoration(
+                  hintText: "Enter text"
+                )),
+                onSubmitted: (String strText){
+                  setState(() {
+                    results=results+"\n"+strText;
+                    controller.text="";
+                  });
+                },
+                controller: controller,
+              ),
+              Text(results)
+            ],
+          ),
+        ),
+
+      )
+    );
+  }
+
+}
+/**************************************/
+
+
+
+
+
+
+
+
+
+
 
 
 
