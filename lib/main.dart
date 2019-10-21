@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'dart:convert';
 void main() {
   runApp(MaterialApp(
     title: "My first app",
-    home: MyLocalImageApp(),
+    home: MyLoadLocalJsonApp(),
     /* Scaffold(
       appBar: AppBar(
         title: Text("My first app appBar"),
@@ -232,6 +232,65 @@ class MyEditTextState extends State<MyEditText>{
 
 }
 /**************************************/
+class MyLoadLocalJsonApp extends StatefulWidget
+{
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return MyLoadLocalJsonAppState();
+  }
+
+}
+
+class MyLoadLocalJsonAppState  extends State<MyLoadLocalJsonApp>{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Load local JSON file"),
+      ),
+      body: Container(
+        child: Center(
+          // Use future builder and DefaultAssetBundle to load the local JSON file
+          child: FutureBuilder(
+            future: DefaultAssetBundle
+            .of(context)
+            .loadString('data_repo/starwars_data.json'),
+        builder: (context,snapshot){
+              //Decode the JSON
+          var new_data=json.decode(snapshot.data.toString());
+
+          return ListView.builder(itemBuilder: (BuildContext context,int index)
+          {
+            return Card(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Text("Name: "+ new_data[index]['name'] ),
+                  Text("Height: "+ new_data[index]['height']),
+
+                ],
+              ),
+            );
+          },
+            itemCount: new_data == null ? 0 : new_data.length,
+
+          );
+
+
+
+
+
+        },
+
+          ),
+        )
+        ,
+      )
+    );
+  }
+}
 
 
 
@@ -248,8 +307,7 @@ class MyEditTextState extends State<MyEditText>{
 
 
 
-
-
+/**************************************/
 class MyButton extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
