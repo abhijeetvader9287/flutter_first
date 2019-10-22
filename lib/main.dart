@@ -7,11 +7,20 @@ import 'package:flutter_app/Tabs/third.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import 'package:flutter_app/screens/account.dart';
+import 'package:flutter_app/screens/home.dart';
+import 'package:flutter_app/screens/settings.dart';
+
 import './utils.dart' as utils;
 void main() {
   runApp(MaterialApp(
     title: "My first app",
-    home: MyGradientDemo(),
+    home: HomeScreen(), // route for home is '/' implicitly
+    routes: <String, WidgetBuilder>{
+      // define the routes
+      SettingsScreen.routeName: (BuildContext context) => SettingsScreen(),
+      AccountScreen.routeName: (BuildContext context) => AccountScreen(),
+    },
     /* Scaffold(
       appBar: AppBar(
         title: Text("My first app appBar"),
