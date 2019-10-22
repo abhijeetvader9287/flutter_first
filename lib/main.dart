@@ -12,6 +12,68 @@ import 'package:flutter_app/screens/home.dart';
 import 'package:flutter_app/screens/settings.dart';
 
 import './utils.dart' as utils;
+
+import 'package:splashscreen/splashscreen.dart';
+void main(){
+  runApp(new MaterialApp(
+    home: new MySplashScreenApp(),
+  ));
+}
+
+
+class MySplashScreenApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => new _MyAppState();
+}
+
+class _MyAppState extends State<MySplashScreenApp> {
+  @override
+  Widget build(BuildContext context) {
+    return new SplashScreen(
+        seconds: 14,
+        navigateAfterSeconds: new AfterSplash(),
+        title: new Text('Welcome In SplashScreen',
+          style: new TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20.0
+          ),),
+        image: new Image.network('https://i.imgur.com/TyCSG9A.png'),
+        backgroundColor: Colors.white,
+        styleTextUnderTheLoader: new TextStyle(),
+        photoSize: 100.0,
+        onClick: ()=>print("Flutter Egypt"),
+        loaderColor: Colors.red
+    );
+  }
+}
+
+class AfterSplash extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+          title: new Text("Welcome In SplashScreen Package"),
+          automaticallyImplyLeading: false
+      ),
+      body: new Center(
+        child: new Text("Done!",
+          style: new TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 30.0
+          ),),
+
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+/*
 void main() {
   runApp(MaterialApp(
     title: "My first app",
@@ -21,7 +83,7 @@ void main() {
       SettingsScreen.routeName: (BuildContext context) => SettingsScreen(),
       AccountScreen.routeName: (BuildContext context) => AccountScreen(),
     },
-    /* Scaffold(
+    *//* Scaffold(
       appBar: AppBar(
         title: Text("My first app appBar"),
       ),
@@ -30,13 +92,13 @@ void main() {
           child: Text("Hello app"),
         ),
       ),
-    ),*/
+    ),*//*
     theme: ThemeData(
         primarySwatch: Colors.red,
         accentColor: Colors.greenAccent,
         backgroundColor: Colors.orange),
   ));
-}
+}*/
 
 
 
