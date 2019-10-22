@@ -5,6 +5,7 @@ import 'package:flutter_app/Tabs/first.dart';
 import 'package:flutter_app/Tabs/second.dart';
 import 'package:flutter_app/Tabs/third.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/contact_page.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter_app/screens/account.dart';
@@ -13,7 +14,9 @@ import 'package:flutter_app/screens/settings.dart';
 
 import './utils.dart' as utils;
 
+/*
 import 'package:splashscreen/splashscreen.dart';
+//splash screen demo
 void main(){
   runApp(new MaterialApp(
     home: new MySplashScreenApp(),
@@ -65,15 +68,28 @@ class AfterSplash extends StatelessWidget {
       ),
     );
   }
+}*/
+
+
+
+
+
+void main() {
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: true,
+    home: Scaffold(
+      appBar: AppBar(
+        title: Text("Using Listview"),
+      ),
+      body: ContactPage(),
+    ),
+  ));
 }
 
 
 
-
-
-
-
 /*
+//Navigation drawer
 void main() {
   runApp(MaterialApp(
     title: "My first app",
@@ -83,16 +99,7 @@ void main() {
       SettingsScreen.routeName: (BuildContext context) => SettingsScreen(),
       AccountScreen.routeName: (BuildContext context) => AccountScreen(),
     },
-    *//* Scaffold(
-      appBar: AppBar(
-        title: Text("My first app appBar"),
-      ),
-      body: Container(
-        child: Center(
-          child: Text("Hello app"),
-        ),
-      ),
-    ),*//*
+
     theme: ThemeData(
         primarySwatch: Colors.red,
         accentColor: Colors.greenAccent,
