@@ -11,7 +11,7 @@ import './utils.dart' as utils;
 void main() {
   runApp(MaterialApp(
     title: "My first app",
-    home: MyCustomFontDemo(),
+    home: MyGradientDemo(),
     /* Scaffold(
       appBar: AppBar(
         title: Text("My first app appBar"),
@@ -28,6 +28,49 @@ void main() {
         backgroundColor: Colors.orange),
   ));
 }
+
+
+
+class MyGradientDemo extends StatefulWidget
+{
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return MyGradientDemoState();
+  }
+
+}
+
+
+class MyGradientDemoState extends State<MyGradientDemo>
+{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      // Appbar
+        appBar: AppBar(
+          // Title
+          title: Text("Using Gradient"),
+        ),
+        // Body
+        body: Container(
+          // Center the content
+            child: Center(
+              // Add Text
+              child: Text(
+                "Hello World!",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            // Set background
+            decoration: BoxDecoration(
+              // Add Gradient
+                gradient: utils.getCustomGradient())));
+  }
+
+}
+
 
 class MyCustomFontDemo extends StatefulWidget
 {

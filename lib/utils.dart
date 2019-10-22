@@ -12,3 +12,13 @@ TextStyle getCustomFontTextStyle() {
       // set the font size
       fontSize: 36.0);
 }
+
+LinearGradient getCustomGradient() {
+  // Define a Linear Gradient
+  return LinearGradient(
+      colors: [Colors.red, Colors.white],
+      begin: const FractionalOffset(0.0, 0.0),
+      end: const FractionalOffset(0.6, 0.0),
+      stops: [0.0, 0.6],
+      tileMode: TileMode.clamp);
+}
