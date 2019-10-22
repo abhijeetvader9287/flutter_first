@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 void main() {
   runApp(MaterialApp(
     title: "My first app",
-    home: MyDialogDemo(),
+    home: MyStepperDemo(),
     /* Scaffold(
       appBar: AppBar(
         title: Text("My first app appBar"),
@@ -24,6 +24,103 @@ void main() {
         backgroundColor: Colors.orange),
   ));
 }
+
+
+class MyStepperDemo extends StatefulWidget
+{
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return MyStepperDemoState();
+  }
+
+}
+class MyStepperDemoState extends State<MyStepperDemo>
+{
+
+  int currentStep=0;
+  List<Step> mySteps=[
+    Step(
+      title: Text("Step 1"),
+      content: Text("Content 1"),
+      isActive: true
+    ),
+    Step(
+     title: Text("Step 2"),
+     content: Text("Content 2"),
+     isActive: true,
+     state: StepState.editing
+
+    ),
+    Step(
+      title: Text("Step 3"),
+          content:Text("Content 3"),
+      isActive: true,
+      state: StepState.error
+    )
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return  Scaffold(
+      appBar: AppBar(
+        title: Text("Stepper example"),
+      ),
+      body: Container(
+        child: Stepper(
+          currentStep: currentStep,
+          steps: mySteps,
+          type: StepperType.vertical,
+          onStepTapped: (step){
+            setState(() {
+              currentStep=step;
+            });
+          },
+          onStepCancel: (){
+            setState(() {
+              if(currentStep>0){
+                currentStep--;
+              }else{
+                currentStep=0;
+              }
+            });
+
+          },
+          onStepContinue: (){
+            setState(() {
+              if(currentStep<mySteps.length-1){
+                currentStep++;
+              }
+              else{
+                currentStep=0;
+              }
+            });
+
+          },
+        ),
+
+      ),
+    );
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class MyDialogDemo extends StatefulWidget
 {
