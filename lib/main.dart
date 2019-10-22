@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 void main() {
   runApp(MaterialApp(
     title: "My first app",
-    home: MyGetHttpData(),
+    home: MyDialogDemo(),
     /* Scaffold(
       appBar: AppBar(
         title: Text("My first app appBar"),
@@ -24,6 +24,50 @@ void main() {
         backgroundColor: Colors.orange),
   ));
 }
+
+class MyDialogDemo extends StatefulWidget
+{
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return MyDialogDemoState();
+  }
+
+}
+class MyDialogDemoState extends State<MyDialogDemo>
+{
+
+  AlertDialog dialog=AlertDialog(
+    content: Text(
+    "Hello",style: TextStyle(fontSize: 15.0),
+    ),
+  );
+
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Alert dialog demo"),
+      ),
+      body: Container(
+        child: Center(
+          child: RaisedButton(
+            child: Text("Press me"),
+            onPressed: (){
+              showDialog(context: context,builder: (BuildContext context)=> dialog);
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+}
+
+
+
 
 class MyApp extends StatelessWidget {
   @override
