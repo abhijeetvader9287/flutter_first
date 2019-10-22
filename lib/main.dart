@@ -25,45 +25,34 @@ void main() {
   ));
 }
 
-
-class MyStepperDemo extends StatefulWidget
-{
+class MyStepperDemo extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
     return MyStepperDemoState();
   }
-
 }
-class MyStepperDemoState extends State<MyStepperDemo>
-{
 
-  int currentStep=0;
-  List<Step> mySteps=[
+class MyStepperDemoState extends State<MyStepperDemo> {
+  int currentStep = 0;
+  List<Step> mySteps = [
+    Step(title: Text("Step 1"), content: Text("Content 1"), isActive: true),
     Step(
-      title: Text("Step 1"),
-      content: Text("Content 1"),
-      isActive: true
-    ),
+        title: Text("Step 2"),
+        content: Text("Content 2"),
+        isActive: true,
+        state: StepState.editing),
     Step(
-     title: Text("Step 2"),
-     content: Text("Content 2"),
-     isActive: true,
-     state: StepState.editing
-
-    ),
-    Step(
-      title: Text("Step 3"),
-          content:Text("Content 3"),
-      isActive: true,
-      state: StepState.error
-    )
+        title: Text("Step 3"),
+        content: Text("Content 3"),
+        isActive: true,
+        state: StepState.error)
   ];
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: Text("Stepper example"),
       ),
@@ -72,74 +61,50 @@ class MyStepperDemoState extends State<MyStepperDemo>
           currentStep: currentStep,
           steps: mySteps,
           type: StepperType.vertical,
-          onStepTapped: (step){
+          onStepTapped: (step) {
             setState(() {
-              currentStep=step;
+              currentStep = step;
             });
           },
-          onStepCancel: (){
+          onStepCancel: () {
             setState(() {
-              if(currentStep>0){
+              if (currentStep > 0) {
                 currentStep--;
-              }else{
-                currentStep=0;
+              } else {
+                currentStep = 0;
               }
             });
-
           },
-          onStepContinue: (){
+          onStepContinue: () {
             setState(() {
-              if(currentStep<mySteps.length-1){
+              if (currentStep < mySteps.length - 1) {
                 currentStep++;
-              }
-              else{
-                currentStep=0;
+              } else {
+                currentStep = 0;
               }
             });
-
           },
         ),
-
       ),
     );
   }
-
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-class MyDialogDemo extends StatefulWidget
-{
+class MyDialogDemo extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
     return MyDialogDemoState();
   }
-
 }
-class MyDialogDemoState extends State<MyDialogDemo>
-{
 
-  AlertDialog dialog=AlertDialog(
+class MyDialogDemoState extends State<MyDialogDemo> {
+  AlertDialog dialog = AlertDialog(
     content: Text(
-    "Hello",style: TextStyle(fontSize: 15.0),
+      "Hello",
+      style: TextStyle(fontSize: 15.0),
     ),
   );
-
 
   @override
   Widget build(BuildContext context) {
@@ -152,19 +117,16 @@ class MyDialogDemoState extends State<MyDialogDemo>
         child: Center(
           child: RaisedButton(
             child: Text("Press me"),
-            onPressed: (){
-              showDialog(context: context,builder: (BuildContext context)=> dialog);
+            onPressed: () {
+              showDialog(
+                  context: context, builder: (BuildContext context) => dialog);
             },
           ),
         ),
       ),
     );
   }
-
 }
-
-
-
 
 class MyApp extends StatelessWidget {
   @override
