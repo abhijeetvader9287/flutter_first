@@ -14,6 +14,29 @@ import 'package:flutter_app/screens/settings.dart';
 
 import './utils.dart' as utils;
 
+import 'package:flutter_app/gridview.dart';
+
+void main() => runApp(MyGridViewApp());
+
+class MyGridViewApp extends StatelessWidget {
+  final MyGridView myGridView = MyGridView();
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text("GridView Demo"),
+        ),
+        body: myGridView.build(),
+      ),
+    );
+  }
+}
+
 /*
 import 'package:splashscreen/splashscreen.dart';
 //splash screen demo
@@ -71,9 +94,12 @@ class AfterSplash extends StatelessWidget {
 }*/
 
 
+/*
+//snackbar demo
 void main() {
   runApp(MaterialApp(home: SnackbarDemoApp(), debugShowCheckedModeBanner: false,));
 }
+*/
 
 class SnackbarDemoApp extends StatelessWidget {
   @override
