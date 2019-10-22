@@ -7,10 +7,11 @@ import 'package:flutter_app/Tabs/third.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import './utils.dart' as utils;
 void main() {
   runApp(MaterialApp(
     title: "My first app",
-    home: MyBottomNavTabBar(),
+    home: MyCustomFontDemo(),
     /* Scaffold(
       appBar: AppBar(
         title: Text("My first app appBar"),
@@ -28,7 +29,43 @@ void main() {
   ));
 }
 
+class MyCustomFontDemo extends StatefulWidget
+{
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return MyCustomFontState();
+  }
 
+
+}
+class MyCustomFontState extends State<MyCustomFontDemo>
+{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      // Appbar
+      appBar: AppBar(
+        // Title
+        title: Text("Using Custom Fonts"),
+      ),
+      // Body
+      body: Container(
+        // Center the content
+        child: Center(
+          // Add Text
+          child: Text("Hi this is custom font, this needs stateful widget and will not work with stateless widget",
+              // Center align text
+              textAlign: TextAlign.center,
+              // set a text style which defines a custom font
+              style: utils.getCustomFontTextStyle()),
+        ),
+      ),
+    ) ;
+  }
+
+}
 
 class MyBottomNavTabBar extends StatefulWidget
 {
