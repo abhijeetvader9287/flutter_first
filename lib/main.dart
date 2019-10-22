@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
-import 'dart:convert';
 import 'dart:async';
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+
 void main() {
   runApp(MaterialApp(
     title: "My first app",
@@ -16,7 +18,7 @@ void main() {
         ),
       ),
     ),*/
-     theme: ThemeData(
+    theme: ThemeData(
         primarySwatch: Colors.red,
         accentColor: Colors.greenAccent,
         backgroundColor: Colors.orange),
@@ -30,30 +32,38 @@ class MyApp extends StatelessWidget {
     final double myTextSize = 30.0;
     final double myIconSize = 40.0;
     final TextStyle myTextStyle =
-    TextStyle(color: Colors.blue, fontSize: myTextSize);
+        TextStyle(color: Colors.blue, fontSize: myTextSize);
     var column = Column(
       // makes the cards strech in horizontal axis
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         //setup the cards
-        MyCard(title: Text("First Text- Favourite",
-          style: myTextStyle,
-        ),
+        MyCard(
+            title: Text(
+              "First Text- Favourite",
+              style: myTextStyle,
+            ),
             //setup icon
             icon: Icon(Icons.favorite, size: myIconSize, color: Colors.brown)),
-        MyCard(title: Text("Second Text- Alarm",
-            style: myTextStyle),
-icon:Icon(Icons.alarm,size: myIconSize,color: Colors.lightGreen,) ,
+        MyCard(
+          title: Text("Second Text- Alarm", style: myTextStyle),
+          icon: Icon(
+            Icons.alarm,
+            size: myIconSize,
+            color: Colors.lightGreen,
+          ),
         ),
         MyCard(
-          title: Text("Third Text airport",
-            style: myTextStyle,),
-          icon: Icon(Icons.airport_shuttle,
-          size: myIconSize,color: Colors.lime,),
-
+          title: Text(
+            "Third Text airport",
+            style: myTextStyle,
+          ),
+          icon: Icon(
+            Icons.airport_shuttle,
+            size: myIconSize,
+            color: Colors.lime,
+          ),
         )
-
-
       ],
     );
 
@@ -64,7 +74,9 @@ icon:Icon(Icons.alarm,size: myIconSize,color: Colors.lightGreen,) ,
       body: Container(
         padding: const EdgeInsets.only(bottom: 2.0),
         child: Center(
-          child: SingleChildScrollView(child: column,),
+          child: SingleChildScrollView(
+            child: column,
+          ),
         ),
       ),
     );
@@ -109,15 +121,10 @@ class MyStartHome extends StatelessWidget {
         decoration: BoxDecoration(color: Colors.yellow),
         child: Center(
           child: Container(
-            color: Theme
-                .of(context)
-                .accentColor,
+            color: Theme.of(context).accentColor,
             child: Text(
               'Hello world',
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .title,
+              style: Theme.of(context).textTheme.title,
             ),
           ),
         ),
@@ -125,8 +132,7 @@ class MyStartHome extends StatelessWidget {
       floatingActionButton: Theme(
         //override theme
         data: Theme.of(context).copyWith(
-            colorScheme: Theme
-                .of(context)
+            colorScheme: Theme.of(context)
                 .colorScheme
                 .copyWith(secondary: Colors.lightBlueAccent)),
         child: FloatingActionButton(
@@ -138,10 +144,7 @@ class MyStartHome extends StatelessWidget {
   }
 }
 
-
-/*************************/
-class MyStateFullWidget extends StatefulWidget
-{
+class MyStateFullWidget extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -149,10 +152,10 @@ class MyStateFullWidget extends StatefulWidget
   }
 }
 
-class MyStateFullWidgetState extends State<MyStateFullWidget>
-{
-  String texts="click here";
-  int counter=0;
+class MyStateFullWidgetState extends State<MyStateFullWidget> {
+  String texts = "click here";
+  int counter = 0;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -163,157 +166,129 @@ class MyStateFullWidgetState extends State<MyStateFullWidget>
       ),
       body: Container(
         child: Center(
-          child: RaisedButton(
-            child: Text(texts),
-            onPressed: onButtonPressed,
-
-          )
-        ),
+            child: RaisedButton(
+          child: Text(texts),
+          onPressed: onButtonPressed,
+        )),
       ),
     );
   }
 
-
   void onButtonPressed() {
     setState(() {
       counter++;
-      texts="you clicked "+counter.toString();
+      texts = "you clicked " + counter.toString();
     });
   }
 }
-/*************************/
 
-/************************************/
-class MyEditText extends StatefulWidget{
+class MyEditText extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
     return MyEditTextState();
   }
-
 }
-class MyEditTextState extends State<MyEditText>{
-  String results="";
-  final TextEditingController controller=TextEditingController();
 
+class MyEditTextState extends State<MyEditText> {
+  String results = "";
+  final TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Using editText"),
-        backgroundColor: Colors.red,
-      ),
-      body:Container(
-        padding: const EdgeInsets.all(10.0),
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              TextField(
-                decoration: (InputDecoration(
-                  hintText: "Enter text"
-                )),
-                onSubmitted: (String strText){
-                  setState(() {
-                    results=results+"\n"+strText;
-                    controller.text="";
-                  });
-                },
-                controller: controller,
-              ),
-              Text(results)
-            ],
-          ),
+        appBar: AppBar(
+          title: Text("Using editText"),
+          backgroundColor: Colors.red,
         ),
-
-      )
-    );
+        body: Container(
+          padding: const EdgeInsets.all(10.0),
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                TextField(
+                  decoration: (InputDecoration(hintText: "Enter text")),
+                  onSubmitted: (String strText) {
+                    setState(() {
+                      results = results + "\n" + strText;
+                      controller.text = "";
+                    });
+                  },
+                  controller: controller,
+                ),
+                Text(results)
+              ],
+            ),
+          ),
+        ));
   }
-
 }
-/**************************************/
-class MyLoadLocalJsonApp extends StatefulWidget
-{
+
+class MyLoadLocalJsonApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
     return MyLoadLocalJsonAppState();
   }
-
 }
 
-class MyLoadLocalJsonAppState  extends State<MyLoadLocalJsonApp>{
+class MyLoadLocalJsonAppState extends State<MyLoadLocalJsonApp> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Load local JSON file"),
-      ),
-      body: Container(
-        child: Center(
-          // Use future builder and DefaultAssetBundle to load the local JSON file
-          child: FutureBuilder(
-            future: DefaultAssetBundle
-            .of(context)
-            .loadString('data_repo/starwars_data.json'),
-        builder: (context,snapshot){
-              //Decode the JSON
-          var new_data=json.decode(snapshot.data.toString());
+        appBar: AppBar(
+          title: Text("Load local JSON file"),
+        ),
+        body: Container(
+          child: Center(
+            // Use future builder and DefaultAssetBundle to load the local JSON file
+            child: FutureBuilder(
+              future: DefaultAssetBundle.of(context)
+                  .loadString('data_repo/starwars_data.json'),
+              builder: (context, snapshot) {
+                //Decode the JSON
+                var new_data = json.decode(snapshot.data.toString());
 
-          return ListView.builder(itemBuilder: (BuildContext context,int index)
-          {
-            return Card(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Text("Name: "+ new_data[index]['name'] ),
-                  Text("Height: "+ new_data[index]['height']),
-
-                ],
-              ),
-            );
-          },
-            itemCount: new_data == null ? 0 : new_data.length,
-
-          );
-
-
-
-
-
-        },
-
+                return ListView.builder(
+                  itemBuilder: (BuildContext context, int index) {
+                    return Card(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          Text("Name: " + new_data[index]['name']),
+                          Text("Height: " + new_data[index]['height']),
+                        ],
+                      ),
+                    );
+                  },
+                  itemCount: new_data == null ? 0 : new_data.length,
+                );
+              },
+            ),
           ),
-        )
-        ,
-      )
-    );
+        ));
   }
 }
 
-/*********************************************/
-
-class MyGetHttpData extends StatefulWidget{
+class MyGetHttpData extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
     return MyGetHttpDataState();
   }
-
 }
 
 class MyGetHttpDataState extends State<MyGetHttpData> {
-  final String url="https://swapi.co/api/people";
+  final String url = "https://swapi.co/api/people";
   List data;
-
 
   // Function to get the JSON data
   Future<String> getJSONData() async {
     var response = await http.get(
-      // Encode the url
+        // Encode the url
         Uri.encodeFull(url),
         // Only accept JSON response
         headers: {"Accept": "application/json"});
@@ -332,14 +307,6 @@ class MyGetHttpDataState extends State<MyGetHttpData> {
     return "Successfull";
   }
 
-
-
-
-
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -353,28 +320,29 @@ class MyGetHttpDataState extends State<MyGetHttpData> {
             return Container(
               child: Center(
                   child: Column(
-                    // Stretch the cards in horizontal axis
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      Card(
-                        child: Container(
-                          child: Text(
-                            // Read the name field value and set it in the Text widget
-                            data[index]['name'],
-                            // set some style to text
-                            style: TextStyle(
-                                fontSize: 20.0, color: Colors.lightBlueAccent),
-                          ),
-                          // added padding
-                          padding: const EdgeInsets.all(15.0),
-                        ),
-                      )
-                    ],
-                  )),
+                // Stretch the cards in horizontal axis
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Card(
+                    child: Container(
+                      child: Text(
+                        // Read the name field value and set it in the Text widget
+                        data[index]['name'],
+                        // set some style to text
+                        style: TextStyle(
+                            fontSize: 20.0, color: Colors.lightBlueAccent),
+                      ),
+                      // added padding
+                      padding: const EdgeInsets.all(15.0),
+                    ),
+                  )
+                ],
+              )),
             );
           }),
     );
   }
+
   @override
   void initState() {
     super.initState();
@@ -384,40 +352,27 @@ class MyGetHttpDataState extends State<MyGetHttpData> {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-/**************************************/
-class MyButton extends StatefulWidget{
+class MyButton extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return MyButtonState();;
+    return MyButtonState();
+    ;
   }
-
 }
 
-class MyButtonState extends State<MyButton>
-{
-  int counter= 0;
-  List<String> strings=['aa','ab','ac','ad','ae','af'];
-  String displayString="Hello world!";
-  void onPressOfButton()
-  {
+class MyButtonState extends State<MyButton> {
+  int counter = 0;
+  List<String> strings = ['aa', 'ab', 'ac', 'ad', 'ae', 'af'];
+  String displayString = "Hello world!";
+
+  void onPressOfButton() {
     setState(() {
-      displayString=strings[counter];
-      counter=counter<4?counter+1:0;
+      displayString = strings[counter];
+      counter = counter < 4 ? counter + 1 : 0;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -431,26 +386,30 @@ class MyButtonState extends State<MyButton>
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(displayString,style: TextStyle(fontSize: 40.0),),
-              Padding(padding: EdgeInsets.all(10.0),),
+              Text(
+                displayString,
+                style: TextStyle(fontSize: 40.0),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10.0),
+              ),
               RaisedButton(
-                child: Text("Press me",
-                style: TextStyle(color: Colors.lightBlueAccent),
+                child: Text(
+                  "Press me",
+                  style: TextStyle(color: Colors.lightBlueAccent),
                 ),
                 color: Colors.red,
                 onPressed: onPressOfButton,
               )
-
             ],
           ),
         ),
       ),
     );
   }
-
 }
 
-class MyLocalImageApp extends StatelessWidget{
+class MyLocalImageApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -462,21 +421,13 @@ class MyLocalImageApp extends StatelessWidget{
         child: Center(
           child: Text(
             "Hi",
-            style: TextStyle(color:Colors.black
-            ),
+            style: TextStyle(color: Colors.black),
           ),
         ),
         decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('data_repo/img/bg1.jpg'),
-            fit: BoxFit.cover
-          )
-        ),
+            image: DecorationImage(
+                image: AssetImage('data_repo/img/bg1.jpg'), fit: BoxFit.cover)),
       ),
-
-
-
     );
   }
-
 }
