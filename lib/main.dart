@@ -1,13 +1,16 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter_app/Tabs/first.dart';
+import 'package:flutter_app/Tabs/second.dart';
+import 'package:flutter_app/Tabs/third.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 void main() {
   runApp(MaterialApp(
     title: "My first app",
-    home: MyStepperDemo(),
+    home: MyTabDemo(),
     /* Scaffold(
       appBar: AppBar(
         title: Text("My first app appBar"),
@@ -24,6 +27,79 @@ void main() {
         backgroundColor: Colors.orange),
   ));
 }
+
+class MyTabDemo extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return MyTabDemoState();
+  }
+
+}
+// SingleTickerProviderStateMixin is used for animation
+class MyTabDemoState extends State<MyTabDemo> with SingleTickerProviderStateMixin
+{
+  
+  TabController controller;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller=TabController(length: 3,vsync: this);
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    controller.dispose();
+    super.dispose();
+    
+  }
+  TabBar getTabBar()
+  {
+    return TabBar(
+      tabs: <Widget>[
+        Tab(
+          icon: Icon(Icons.airport_shuttle),
+        ),
+        Tab(
+          icon: Icon(Icons.access_time),
+        ),
+        Tab(
+          icon: Icon(Icons.ac_unit),
+        )
+      ],
+      controller: controller,
+    );
+  }
+  TabBarView getTabBarView(var tabs)
+  {
+    return TabBarView(
+      children: tabs,
+      controller: controller,
+    );
+  }
+  
+  
+  
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Tabs demo"),
+        backgroundColor: Colors.greenAccent,
+        bottom: getTabBar()
+      ),
+      body: getTabBarView(<Widget>[First(), Second(), Third()]),
+    );
+  }
+
+}
+
+
+
+
+
 
 class MyStepperDemo extends StatefulWidget {
   @override
