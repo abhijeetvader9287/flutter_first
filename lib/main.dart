@@ -6,6 +6,7 @@ import 'package:flutter_app/Tabs/second.dart';
 import 'package:flutter_app/Tabs/third.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/contact_page.dart';
+import 'package:flutter_app/screens/NetworkExampleScreen.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter_app/screens/account.dart';
@@ -374,6 +375,7 @@ class MyGridViewApp extends StatelessWidget {
     );
   }
 }*/
+
 class MyGridViewApp extends StatelessWidget {
 
   static const String routeName = "/MyGridViewApp";
@@ -533,7 +535,7 @@ void main() {
       MyLoadLocalJsonApp.routeName: (BuildContext context) => MyLoadLocalJsonApp(),
       ContactPage.routeName: (BuildContext context) => ContactPage(),
       MyGradientDemo.routeName: (BuildContext context) => MyGradientDemo(),
-      MyGetHttpData.routeName: (BuildContext context) => MyGetHttpData(),
+      NetworkExampleScreen.routeName: (BuildContext context) => NetworkExampleScreen(),
     },
 
     theme: ThemeData(

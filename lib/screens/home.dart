@@ -4,6 +4,8 @@ import 'package:flutter_app/screens/account.dart';
 import 'package:flutter_app/screens/settings.dart';
 import 'package:flutter_app/main.dart';
 
+import 'NetworkExampleScreen.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   HomeScreenState createState() => HomeScreenState();
@@ -11,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 
 class HomeScreenState extends State<HomeScreen> {
   Drawer getNavDrawer(BuildContext context) {
-    var headerChild = DrawerHeader(child: Text("Header"));
+    var headerChild = DrawerHeader(child: Image(image: AssetImage( "data_repo/bg1.jpg")), padding: const EdgeInsets.all(0),  );
     var aboutChild = AboutListTile(
         child: Text("About"),
         applicationName: "Flutter POC",
@@ -41,7 +43,7 @@ class HomeScreenState extends State<HomeScreen> {
 
       getNavItem(Icons.local_atm, "Load Local Json ", MyLoadLocalJsonApp.routeName),
       getNavItem(Icons.contacts, "Contact List", ContactPage.routeName),
-      getNavItem(Icons.http, "Get Http Data", MyGetHttpData.routeName),
+      getNavItem(Icons.http, "Get Http Data", NetworkExampleScreen.routeName),
       getNavItem(Icons.gradient, "GradientDemo", MyGradientDemo.routeName),
       aboutChild
     ];

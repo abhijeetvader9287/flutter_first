@@ -6,9 +6,10 @@ class MyGridView {
         elevation: 1.5,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.max,
-          verticalDirection: VerticalDirection.up,
+          mainAxisSize: MainAxisSize.min,
+          verticalDirection: VerticalDirection.down,
           children: <Widget>[
+            Image(image: AssetImage( image)),
 
             Center(
               child: Text(name),
@@ -26,11 +27,11 @@ class MyGridView {
       mainAxisSpacing: 1.0,
       crossAxisSpacing: 1.0,
       children: <Widget>[
-        getStructuredGridCell("Facebook", "data_repo/img/social/facebook.png"),
-        getStructuredGridCell("Twitter", "data_repo/img/social/twitter.png"),
-        getStructuredGridCell("Instagram", "data_repo/img/social/instagram.png"),
-        getStructuredGridCell("Linkedin", "data_repo/img/social/linkedin.png"),
-        getStructuredGridCell("Google Plus", "data_repo/img/social/google_plus.png"),
+        getStructuredGridCell("Facebook", "data_repo/facebook.png"),
+        getStructuredGridCell("Twitter", "data_repo/twitter.png"),
+        getStructuredGridCell("Instagram", "data_repo/instagram.png"),
+        getStructuredGridCell("Linkedin", "data_repo/linkedin.png"),
+        getStructuredGridCell("Google Plus", "data_repo/google_plus.png"),
        ],
     );
   }
