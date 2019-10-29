@@ -3,6 +3,8 @@ import 'package:flutter_app/contactlist/contact_list.dart';
 import 'package:flutter_app/contactlist/modal/contact.dart';
 
 class ContactPage extends StatelessWidget {
+  static const String routeName = "/contactPage";
+
   _buildContactList() {
     return <ContactModal>[
       const ContactModal(

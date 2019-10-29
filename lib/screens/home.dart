@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/contact_page.dart';
 import 'package:flutter_app/screens/account.dart';
 import 'package:flutter_app/screens/settings.dart';
+import 'package:flutter_app/main.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -12,7 +14,7 @@ class HomeScreenState extends State<HomeScreen> {
     var headerChild = DrawerHeader(child: Text("Header"));
     var aboutChild = AboutListTile(
         child: Text("About"),
-        applicationName: "Application Name",
+        applicationName: "Flutter POC",
         applicationVersion: "v1.0.0",
         applicationIcon: Icon(Icons.adb),
         icon: Icon(Icons.info));
@@ -34,9 +36,13 @@ class HomeScreenState extends State<HomeScreen> {
 
     var myNavChildren = [
       headerChild,
-      getNavItem(Icons.settings, "Settings", SettingsScreen.routeName),
       getNavItem(Icons.home, "Home", "/"),
-      getNavItem(Icons.account_box, "Account", AccountScreen.routeName),
+      getNavItem(Icons.grid_on, "GridView Screen", MyGridViewApp.routeName),
+
+      getNavItem(Icons.local_atm, "Load Local Json ", MyLoadLocalJsonApp.routeName),
+      getNavItem(Icons.contacts, "Contact List", ContactPage.routeName),
+      getNavItem(Icons.http, "Get Http Data", MyGetHttpData.routeName),
+      getNavItem(Icons.gradient, "GradientDemo", MyGradientDemo.routeName),
       aboutChild
     ];
 
@@ -51,7 +57,7 @@ class HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Navigation Drawer Demo"),
+        title: Text("Flutter POC"),
       ),
       body: Container(
           child: Center(

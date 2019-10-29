@@ -20,7 +20,7 @@ import 'package:english_words/english_words.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
-
+/*
 void main() {
   runApp(MaterialApp(
     // Disable the debug flag
@@ -118,7 +118,7 @@ class MySharedPreferenceHomeState extends State<MySharedPreferenceHome> {
       ),
     );
   }
-}
+}*/
 
 
 
@@ -252,11 +252,12 @@ class RandomWordsState extends State<RandomWords> {
 
 
 
-/*
 // image from network
-void main() => runApp(MyImageFromNetwordApp());
+/*void main() => runApp(MyImageFromNetwordApp());*/
 
-class MyImageFromNetwordApp extends StatelessWidget {
+class MyImageFromNetworkApp extends StatelessWidget {
+  static const String routeName = "/MyImageFromNetworkApp";
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -279,7 +280,7 @@ class MyImageFromNetwordApp extends StatelessWidget {
       ),
     );
   }
-}*/
+}
 /*
 // Dropdown list demo
 void main() => runApp(MyDropdownListApp());
@@ -373,7 +374,26 @@ class MyGridViewApp extends StatelessWidget {
     );
   }
 }*/
+class MyGridViewApp extends StatelessWidget {
 
+  static const String routeName = "/MyGridViewApp";
+  final MyGridView myGridView = MyGridView();
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text("GridView Demo"),
+        ),
+        body: myGridView.build(),
+      ),
+    );
+  }
+}
 /*
 import 'package:splashscreen/splashscreen.dart';
 //splash screen demo
@@ -482,8 +502,8 @@ class SnackbarDemoAppButton extends StatelessWidget {
 }
 
 
-
 /*
+
 //list view demo
 
 void main() {
@@ -491,16 +511,15 @@ void main() {
     debugShowCheckedModeBanner: true,
     home: Scaffold(
       appBar: AppBar(
-        title: Text("Using Listview"),
+        title: Text("POC  Listview"),
       ),
       body: ContactPage(),
     ),
   ));
-}*/
+} */
 
 
 
-/*
 //Navigation drawer
 void main() {
   runApp(MaterialApp(
@@ -510,6 +529,11 @@ void main() {
       // define the routes
       SettingsScreen.routeName: (BuildContext context) => SettingsScreen(),
       AccountScreen.routeName: (BuildContext context) => AccountScreen(),
+      MyGridViewApp.routeName: (BuildContext context) => MyGridViewApp(),
+      MyLoadLocalJsonApp.routeName: (BuildContext context) => MyLoadLocalJsonApp(),
+      ContactPage.routeName: (BuildContext context) => ContactPage(),
+      MyGradientDemo.routeName: (BuildContext context) => MyGradientDemo(),
+      MyGetHttpData.routeName: (BuildContext context) => MyGetHttpData(),
     },
 
     theme: ThemeData(
@@ -517,12 +541,14 @@ void main() {
         accentColor: Colors.greenAccent,
         backgroundColor: Colors.orange),
   ));
-}*/
+}
 
 
 
 class MyGradientDemo extends StatefulWidget
 {
+
+  static const String routeName = "/MyGradientDemo";
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -685,7 +711,7 @@ class MyTabDemo extends StatefulWidget{
 // SingleTickerProviderStateMixin is used for animation
 class MyTabDemoState extends State<MyTabDemo> with SingleTickerProviderStateMixin
 {
-  
+
   TabController controller;
   @override
   void initState() {
@@ -698,7 +724,7 @@ class MyTabDemoState extends State<MyTabDemo> with SingleTickerProviderStateMixi
     // TODO: implement dispose
     controller.dispose();
     super.dispose();
-    
+
   }
   TabBar getTabBar()
   {
@@ -724,9 +750,9 @@ class MyTabDemoState extends State<MyTabDemo> with SingleTickerProviderStateMixi
       controller: controller,
     );
   }
-  
-  
-  
+
+
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -1052,6 +1078,8 @@ class MyEditTextState extends State<MyEditText> {
 }
 
 class MyLoadLocalJsonApp extends StatefulWidget {
+  static const String routeName = "/MyLoadLocalJsonApp";
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -1099,6 +1127,8 @@ class MyLoadLocalJsonAppState extends State<MyLoadLocalJsonApp> {
 }
 
 class MyGetHttpData extends StatefulWidget {
+
+  static const String routeName = "/MyGetHttpData";
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -1235,6 +1265,8 @@ class MyButtonState extends State<MyButton> {
 }
 
 class MyLocalImageApp extends StatelessWidget {
+
+  static const String routeName = "/MyLocalImageApp";
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
